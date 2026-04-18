@@ -1,0 +1,17 @@
+{
+  "name": "eshu",
+  "private": true,
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "typecheck": "bun run --filter '*' typecheck",
+    "lint": "bunx biome lint .",
+    "format": "bunx biome format --write .",
+    "check": "bunx biome check .",
+    "test": "bun run --filter '*' test"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.0",
+    "@types/bun": "^1.2.0",
+    "typescript": "^5.8.0"
+  }
+}

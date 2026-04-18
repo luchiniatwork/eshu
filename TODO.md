@@ -31,51 +31,53 @@ building the CLI first doesn't create throwaway work.
 
 ### Project scaffolding
 
-- [ ] Create monorepo root with `package.json` (bun workspaces)
-- [ ] Create root `tsconfig.json` with shared compiler options
-- [ ] Create all package directories with `package.json` and
+- [x] Create monorepo root with `package.json` (bun workspaces)
+- [x] Create root `tsconfig.json` with shared compiler options
+- [x] Create all package directories with `package.json` and
       `tsconfig.json`: `shared`, `api-server`, `api-client`,
       `mcp-server`, `cli`
-- [ ] Add `biome.json` with Moneta's formatting rules (2-space
+- [x] Add `biome.json` with Moneta's formatting rules (2-space
       indent, no semicolons, double quotes, 100-char width)
-- [ ] Add shared dev dependencies: `typescript`, `@biomejs/biome`,
+- [x] Add shared dev dependencies: `typescript`, `@biomejs/biome`,
       `@types/bun`, `supabase`
-- [ ] Add `flake.nix` for reproducible dev environment (Bun,
+- [x] Add `flake.nix` for reproducible dev environment (Bun,
       Supabase CLI, PostgreSQL)
-- [ ] Add `.gitignore`, `.dockerignore`
+- [x] Add `.gitignore`, `.dockerignore`
 
 ### Database
 
-- [ ] Create `supabase/migrations/001_create_directory_entry.sql`
+- [x] Create `supabase/migrations/000_enable_extensions.sql`
+      — pgvector extension
+- [x] Create `supabase/migrations/001_create_directory_entry.sql`
       — table DDL from SPEC section 3.1
-- [ ] Create `supabase/migrations/002_create_message.sql`
+- [x] Create `supabase/migrations/002_create_message.sql`
       — table DDL from SPEC section 3.2
-- [ ] Create `supabase/migrations/003_create_mailbox_entry.sql`
+- [x] Create `supabase/migrations/003_create_mailbox_entry.sql`
       — table DDL from SPEC section 3.3
-- [ ] Create `supabase/migrations/004_create_message_recipient.sql`
+- [x] Create `supabase/migrations/004_create_message_recipient.sql`
       — table DDL from SPEC section 3.4
-- [ ] Create `supabase/migrations/005_create_indexes.sql`
+- [x] Create `supabase/migrations/005_create_indexes.sql`
       — all indexes from SPEC section 3.5
-- [ ] Create `supabase/migrations/006_create_functions.sql`
+- [x] Create `supabase/migrations/006_create_functions.sql`
       — `search_messages()` function from SPEC section 3.6
-- [ ] Apply migrations to a dev Supabase instance and verify with
+- [x] Apply migrations to a dev Supabase instance and verify with
       manual INSERT + SELECT round-trip
 
 ### Shared library (`packages/shared`)
 
-- [ ] `types.ts` — All domain types: `DirectoryEntry`, `Message`,
+- [x] `types.ts` — All domain types: `DirectoryEntry`, `Message`,
       `MailboxEntry`, `MessageRecipient`, `SearchResult`, `Config`,
       Kysely table interfaces
-- [ ] `config.ts` — Load config from env vars → config file →
+- [x] `config.ts` — Load config from env vars → config file →
       defaults (ESHU_* prefix)
-- [ ] `db.ts` — Kysely + postgres.js client, typed wrappers for
+- [x] `db.ts` — Kysely + postgres.js client, typed wrappers for
       queries (inbox, send, read, search, directory CRUD, archive)
-- [ ] `embeddings.ts` — `embed(text, apiKey, model?): Promise<number[]>`
+- [x] `embeddings.ts` — `embed(text, apiKey, model?): Promise<number[]>`
       (reuse Moneta's approach)
-- [ ] `identity.ts` — `parseAddress()` decomposition (address →
+- [x] `identity.ts` — `parseAddress()` decomposition (address →
       type, engineer, agentType)
-- [ ] `index.ts` — barrel export
-- [ ] Unit tests for config loading, identity parsing, embedding
+- [x] `index.ts` — barrel export
+- [x] Unit tests for config loading, identity parsing, embedding
       generation
 
 ---

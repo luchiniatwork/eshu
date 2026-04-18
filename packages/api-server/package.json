@@ -1,0 +1,16 @@
+{
+  "name": "@eshu/api-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "dev": "bun --watch src/index.ts",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@eshu/shared": "workspace:*",
+    "hono": "^4.0.0"
+  }
+}
