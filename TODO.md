@@ -151,36 +151,37 @@ building the CLI first doesn't create throwaway work.
 
 ### CLI scaffolding
 
-- [ ] `packages/cli/src/index.ts` — entry point, Commander arg
+- [x] `packages/cli/src/index.ts` — entry point, Commander arg
       parser
-- [ ] Config loading: reuse shared config module
-- [ ] Output formatting helpers (table renderer, colors, --json
+- [x] Config loading: reuse shared config module
+- [x] Output formatting helpers (table renderer, colors, --json
       support)
-- [ ] Short ID display: show first 6 chars of UUID, accept prefix
-      match
+- [x] Short ID display: show first 8 chars of UUID, accept prefix
+      match (local cache at `~/.eshu/.id-cache`)
+- [x] Unit tests for format, id-cache, and editor utilities
 
 ### Read commands
 
-- [ ] `eshu inbox` — inbox view (threaded/flat, unread filter)
-- [ ] `eshu read <id>` — read a message, show full content
-- [ ] `eshu search <query>` — semantic search with tabular output
-- [ ] `eshu directory` — list directory entries
-- [ ] `eshu stats` — aggregate dashboard
+- [x] `eshu inbox` — inbox view (threaded/flat, unread filter)
+- [x] `eshu read <id>` — read a message, show full content
+- [x] `eshu search <query>` — semantic search with tabular output
+- [x] `eshu directory` — list directory entries
+- [x] `eshu stats` — aggregate dashboard
 
 ### Write commands
 
-- [ ] `eshu send` — compose and send a new message (with $EDITOR
+- [x] `eshu send` — compose and send a new message (with $EDITOR
       support)
-- [ ] `eshu reply <id>` — reply to a message (reply-all default,
+- [x] `eshu reply <id>` — reply to a message (reply-all default,
       `--to` to override recipients)
-- [ ] `eshu archive <id>` / `eshu unarchive <id>` — archive
+- [x] `eshu archive <id>` / `eshu unarchive <id>` — archive
       management
 
 ### Directory management
 
-- [ ] `eshu directory add` — add a new directory entry
-- [ ] `eshu directory edit <address>` — edit entry (opens $EDITOR)
-- [ ] `eshu directory remove <address>` — remove entry with
+- [x] `eshu directory add` — add a new directory entry
+- [x] `eshu directory edit <address>` — edit entry (opens $EDITOR)
+- [x] `eshu directory remove <address>` — remove entry with
       confirmation
 
 ### Smoke test
