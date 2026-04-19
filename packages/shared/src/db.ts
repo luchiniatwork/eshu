@@ -191,7 +191,7 @@ export async function getInboxThreaded(
     if (!threadMap.has(threadId)) {
       threadMap.set(threadId, { messages: [] })
     }
-    threadMap.get(threadId)!.messages.push({
+    threadMap.get(threadId)?.messages.push({
       id: entry.message_id,
       sender: entry.sender,
       subject: entry.subject,
@@ -376,10 +376,7 @@ export async function getMessage(
   }
 }
 
-export async function getThread(
-  db: Kysely<Database>,
-  threadId: string,
-): Promise<MessageDetail[]> {
+export async function getThread(db: Kysely<Database>, threadId: string): Promise<MessageDetail[]> {
   const rows = await db
     .selectFrom("message")
     .selectAll()
@@ -512,12 +509,7 @@ export async function searchMessages(
     includeArchived?: boolean
   } = {},
 ): Promise<SearchResult[]> {
-  const {
-    folder = "inbox",
-    limit = 20,
-    threshold = 0.25,
-    includeArchived = false,
-  } = opts
+  const { folder = "inbox", limit = 20, threshold = 0.25, includeArchived = false } = opts
 
   const result = await sql<{
     id: string
@@ -577,10 +569,7 @@ export async function setArchived(
 // Stats
 // ---------------------------------------------------------------------------
 
-export async function getStats(
-  db: Kysely<Database>,
-  projectId: string,
-): Promise<Stats> {
+export async function getStats(db: Kysely<Database>, projectId: string): Promise<Stats> {
   // Total messages
   const totalResult = await db
     .selectFrom("message")

@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs"
-import { join } from "node:path"
 import { homedir } from "node:os"
-import type { ServerConfig, ClientConfig } from "./types"
+import { join } from "node:path"
+import type { ClientConfig, ServerConfig } from "./types"
 
 // ---------------------------------------------------------------------------
 // Config file loading
@@ -59,7 +59,8 @@ export function loadServerConfig(): ServerConfig {
     openaiApiKey,
     apiPort: Number(process.env.ESHU_API_PORT ?? file.api_port ?? 3100),
     apiKey: process.env.ESHU_API_KEY ?? file.api_key ?? null,
-    embeddingModel: process.env.ESHU_EMBEDDING_MODEL ?? file.embedding_model ?? "text-embedding-3-small",
+    embeddingModel:
+      process.env.ESHU_EMBEDDING_MODEL ?? file.embedding_model ?? "text-embedding-3-small",
     searchThreshold: Number(process.env.ESHU_SEARCH_THRESHOLD ?? file.search_threshold ?? 0.25),
     searchLimit: Number(process.env.ESHU_SEARCH_LIMIT ?? file.search_limit ?? 20),
   }

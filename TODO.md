@@ -95,44 +95,44 @@ building the CLI first doesn't create throwaway work.
 
 ### API Server (`packages/api-server`)
 
-- [ ] `app.ts` — Hono app factory with middleware stack
-- [ ] Middleware: `auth.ts` (Bearer token), `identity.ts` (extract
+- [x] `app.ts` — Hono app factory with middleware stack
+- [x] Middleware: `auth.ts` (Bearer token), `identity.ts` (extract
       agent/user address from header), `error-handler.ts`
-- [ ] `types.ts` — Zod schemas for all request/response types
-- [ ] Routes and handlers:
-  - [ ] `POST /api/v1/directory` — List directory (with optional
+- [x] `types.ts` — Zod schemas for all request/response types
+- [x] Routes and handlers:
+  - [x] `POST /api/v1/directory` — List directory (with optional
         type filter)
-  - [ ] `POST /api/v1/directory/add` — Add directory entry
-  - [ ] `PUT /api/v1/directory/:address` — Update directory entry
-  - [ ] `DELETE /api/v1/directory/:address` — Remove directory entry
-  - [ ] `POST /api/v1/inbox` — Get inbox (threaded/flat, unread
+  - [x] `POST /api/v1/directory/add` — Add directory entry
+  - [x] `PUT /api/v1/directory/:address` — Update directory entry
+  - [x] `DELETE /api/v1/directory/:address` — Remove directory entry
+  - [x] `POST /api/v1/inbox` — Get inbox (threaded/flat, unread
         filter, pagination)
-  - [ ] `POST /api/v1/messages/:id/read` — Read a message (mark
+  - [x] `POST /api/v1/messages/:id/read` — Read a message (mark
         read, trigger receipt if needed)
-  - [ ] `POST /api/v1/messages/:id/archive` — Archive a message
-  - [ ] `POST /api/v1/messages/:id/unarchive` — Unarchive a message
-  - [ ] `POST /api/v1/messages/search` — Semantic search
-  - [ ] `POST /api/v1/messages/send` — Send a message (new or reply)
-  - [ ] `GET /api/v1/messages/:id/thread` — Get full thread
-  - [ ] `GET /api/v1/stats` — Messaging statistics
-  - [ ] `GET /api/v1/health` — Health check
-- [ ] Receipt handling logic: on first read of a receipt-requested
+  - [x] `POST /api/v1/messages/:id/archive` — Archive a message
+  - [x] `POST /api/v1/messages/:id/unarchive` — Unarchive a message
+  - [x] `POST /api/v1/messages/search` — Semantic search
+  - [x] `POST /api/v1/messages/send` — Send a message (new or reply)
+  - [x] `GET /api/v1/messages/:id/thread` — Get full thread
+  - [x] `GET /api/v1/stats` — Messaging statistics
+  - [x] `GET /api/v1/health` — Health check
+- [x] Receipt handling logic: on first read of a receipt-requested
       message, auto-create receipt message in thread
-- [ ] Reply-all resolution: compute default recipients from parent
+- [x] Reply-all resolution: compute default recipients from parent
       message
-- [ ] Embedding generation on send
-- [ ] Handler unit tests
+- [x] Embedding generation on send
+- [x] Handler unit tests
 
 ### API Client (`packages/api-client`)
 
-- [ ] `types.ts` — Client-side type definitions (camelCase API
+- [x] `types.ts` — Client-side type definitions (camelCase API
       contract)
-- [ ] `client.ts` — `createClient()` factory with all methods:
+- [x] `client.ts` — `createClient()` factory with all methods:
       `directory()`, `inbox()`, `readMessage()`,
       `searchMessages()`, `sendMessage()`, `archiveMessage()`,
       `unarchiveMessage()`, `addDirectoryEntry()`, etc.
-- [ ] `errors.ts` — `ApiError` class
-- [ ] Client unit tests
+- [x] `errors.ts` — `ApiError` class
+- [x] Client unit tests
 
 ---
 

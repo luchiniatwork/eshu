@@ -43,7 +43,8 @@ describe.skipIf(!process.env.OPENAI_API_KEY)("embed (integration)", () => {
   const { embed } = require("./embeddings")
 
   test("generates 1536-dim vector", async () => {
-    const result = await embed("Hello, world!", process.env.OPENAI_API_KEY!)
+    const apiKey = process.env.OPENAI_API_KEY as string
+    const result = await embed("Hello, world!", apiKey)
     expect(Array.isArray(result)).toBe(true)
     expect(result.length).toBe(1536)
     expect(typeof result[0]).toBe("number")
