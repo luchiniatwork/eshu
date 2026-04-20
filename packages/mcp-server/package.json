@@ -6,7 +6,7 @@
   "main": "src/index.ts",
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "test": "bun test"
+    "test": "echo 'No tests yet (Phase 5)'"
   },
   "dependencies": {
     "@eshu/api-client": "workspace:*",

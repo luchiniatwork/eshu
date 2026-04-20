@@ -186,13 +186,13 @@ building the CLI first doesn't create throwaway work.
 
 ### Smoke test
 
-- [ ] Manual end-to-end: set up directory, send messages between
+- [x] Manual end-to-end: set up directory, send messages between
       two human addresses, verify inbox, read, reply, archive
-- [ ] Verify threading: send, reply, reply again — confirm thread
+- [x] Verify threading: send, reply, reply again — confirm thread
       reconstruction
-- [ ] Verify read receipts: send with `--receipt`, read from other
+- [x] Verify read receipts: send with `--receipt`, read from other
       address, confirm receipt appears in sender's thread
-- [ ] Verify search: send several messages, search by query, confirm
+- [x] Verify search: send several messages, search by query, confirm
       semantic ranking
 
 ---
