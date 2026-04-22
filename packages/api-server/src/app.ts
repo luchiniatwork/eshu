@@ -12,7 +12,9 @@ import { inboxHandler } from "./handlers/inbox"
 import { getThreadHandler, readMessageHandler } from "./handlers/read"
 import { searchHandler } from "./handlers/search"
 import { sendMessageHandler } from "./handlers/send"
+import { sentHandler } from "./handlers/sent"
 import { statsHandler } from "./handlers/stats"
+import { markUnreadHandler } from "./handlers/unread"
 import { authMiddleware } from "./middleware/auth"
 import { handleError } from "./middleware/error-handler"
 import { identityMiddleware } from "./middleware/identity"
@@ -62,13 +64,15 @@ export function createApp(config: ServerConfig, db: Kysely<Database>): Hono<AppE
   api.put("/directory/:address", updateDirectoryHandler)
   api.delete("/directory/:address", removeDirectoryHandler)
 
-  // Inbox
+  // Inbox & Sent
   api.post("/inbox", inboxHandler)
+  api.post("/sent", sentHandler)
 
   // Messages
   api.post("/messages/send", sendMessageHandler)
   api.post("/messages/search", searchHandler)
   api.post("/messages/:id/read", readMessageHandler)
+  api.post("/messages/:id/unread", markUnreadHandler)
   api.post("/messages/:id/archive", archiveHandler)
   api.post("/messages/:id/unarchive", unarchiveHandler)
   api.get("/messages/:id/thread", getThreadHandler)

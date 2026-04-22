@@ -493,6 +493,21 @@ export async function getMessageRecipients(
   return rows.map((r) => r.recipient)
 }
 
+export async function markAsUnread(
+  db: Kysely<Database>,
+  messageId: string,
+  recipient: string,
+): Promise<boolean> {
+  const result = await db
+    .updateTable("mailbox_entry")
+    .set({ read_at: null })
+    .where("message_id", "=", messageId)
+    .where("recipient", "=", recipient)
+    .executeTakeFirst()
+
+  return result.numUpdatedRows > 0n
+}
+
 // ---------------------------------------------------------------------------
 // Search
 // ---------------------------------------------------------------------------

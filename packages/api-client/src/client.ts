@@ -121,6 +121,11 @@ export function createClient(opts: ClientOptions) {
       return request("POST", "/api/v1/inbox", { ...opts, mode: "flat" })
     },
 
+    /** Get messages sent by this address. */
+    sentMessages(opts?: { limit?: number }): Promise<InboxMessage[]> {
+      return request("POST", "/api/v1/sent", opts ?? {})
+    },
+
     // -----------------------------------------------------------------------
     // Messages
     // -----------------------------------------------------------------------
@@ -156,6 +161,11 @@ export function createClient(opts: ClientOptions) {
       receiptRequested?: boolean
     }): Promise<SendResult> {
       return request("POST", "/api/v1/messages/send", input)
+    },
+
+    /** Mark a message as unread in the caller's mailbox. */
+    markUnread(id: string): Promise<{ id: string; markedUnread: boolean }> {
+      return request("POST", `/api/v1/messages/${id}/unread`)
     },
 
     /** Archive a message (hides from inbox, still searchable). */

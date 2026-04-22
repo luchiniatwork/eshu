@@ -210,53 +210,61 @@ building the CLI first doesn't create throwaway work.
 
 ### Framework setup
 
-- [ ] Choose TUI framework — **Ink** (same as Moneta, proven in
-      this ecosystem)
-- [ ] Basic app shell: header bar (project, user, unread count),
+- [x] Choose TUI framework — **Ink v7** (React 18, ESM)
+- [x] Basic app shell: header bar (project, user, unread count),
       footer bar (keybindings), main content area
-- [ ] React context for config + API client
+- [x] React context for config + API client
 
 ### Inbox mode (default)
 
-- [ ] Message list (left panel): unread indicator, sender, subject,
+- [x] Message list (left panel): unread indicator, sender, subject,
       time, thread info
-- [ ] Message detail (right panel): full headers, body, thread
+- [x] Message detail (right panel): full headers, body, thread
       context
-- [ ] `j`/`k` or arrow keys to navigate
-- [ ] Enter to open/expand thread
-- [ ] Threaded/flat toggle (`t`)
-- [ ] Archive action (`a`)
+- [x] `j`/`k` or arrow keys to navigate
+- [x] Enter to open/expand thread
+- [x] Threaded/flat toggle (`t`)
+- [x] Archive action (`a`)
 
 ### Compose / Reply
 
-- [ ] `r` to reply (inline compose or $EDITOR)
-- [ ] `c` to compose new message
-- [ ] Recipient picker from directory
-- [ ] Receipt request toggle
+- [x] `r` to reply ($EDITOR) and `R` for inline quick reply
+- [x] `c` to compose new message
+- [x] Recipient picker from directory (address list in $EDITOR
+      template)
+- [x] Receipt request toggle
 
 ### Sent mode
 
-- [ ] `Tab` to switch to sent messages
-- [ ] Same list/detail layout, sorted by sent date
+- [x] `Tab` to switch to sent messages
+- [x] Same list/detail layout, sorted by sent date
 
 ### Search mode
 
-- [ ] `/` to focus search bar, Enter to search
-- [ ] Results ranked by similarity
-- [ ] Navigate and read results
+- [x] `/` to focus search bar, Enter to search
+- [x] Results ranked by similarity
+- [x] Navigate and read results
 
 ### Directory mode
 
-- [ ] `d` to open directory panel
-- [ ] Browse entries with descriptions and expectations
-- [ ] Add/edit/remove entries (if admin)
+- [x] `d` to open directory panel
+- [x] Browse entries with descriptions and expectations
+- [x] Add/edit/remove entries (via $EDITOR)
 
 ### Polish
 
-- [ ] Responsive layout (adapt to terminal size)
-- [ ] Loading indicators for API calls
-- [ ] Error display (non-crashing)
-- [ ] Help overlay (`?` / `F1`)
+- [x] Responsive layout (adapt to terminal size)
+- [x] Loading indicators for API calls
+- [x] Error display (non-crashing, auto-dismiss after 5s)
+- [x] Help overlay (`?` / `F1`)
+
+### API gaps filled (pre-work for TUI)
+
+- [x] `POST /api/v1/sent` — sent messages endpoint (DB function
+      existed, added route + handler + client method)
+- [x] `POST /api/v1/messages/:id/unread` — mark as unread endpoint
+      (added `markAsUnread` to db.ts, handler, client method)
+- [x] Auto-refresh inbox every 30s + manual refresh (`g` key)
 
 ---
 

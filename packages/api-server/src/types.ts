@@ -63,6 +63,10 @@ export const SearchSchema = z.object({
   includeArchived: z.boolean().default(false),
 })
 
+export const SentSchema = z.object({
+  limit: z.number().int().positive().max(100).default(20),
+})
+
 export const SendMessageSchema = z.object({
   to: z.array(z.string().min(1)).min(1).optional(),
   subject: z.string().min(1).optional(),

@@ -46,13 +46,46 @@ function getClient(): EshuClient {
 }
 
 // ---------------------------------------------------------------------------
+// TUI launcher
+// ---------------------------------------------------------------------------
+
+async function launchTui() {
+  const config = getConfig()
+  const address = config.userAddress
+  if (!address) {
+    throw new Error(
+      "ESHU_USER_ADDRESS is required. Set it via environment variable or in ~/.eshu/config.json",
+    )
+  }
+
+  const { render } = await import("ink")
+  const { createElement } = await import("react")
+  const { App } = await import("./tui/App")
+
+  const client = getClient()
+  const element = createElement(App, {
+    client,
+    userAddress: address,
+    projectId: config.projectId,
+  })
+
+  render(element)
+}
+
+// ---------------------------------------------------------------------------
 // Program setup
 // ---------------------------------------------------------------------------
 
 const program = new Command()
 program.name("eshu").description("Agent messaging system — terminal mail client").version("0.1.0")
 
-// Register all commands
+// TUI command (also the default when no subcommand is given)
+program
+  .command("tui")
+  .description("Launch interactive terminal mail client")
+  .action(() => launchTui())
+
+// Register all CLI commands
 registerInboxCommand(program, getClient)
 registerReadCommand(program, getClient)
 registerSearchCommand(program, getClient)
@@ -61,6 +94,9 @@ registerReplyCommand(program, getClient)
 registerArchiveCommands(program, getClient)
 registerDirectoryCommand(program, getClient)
 registerStatsCommand(program, getClient)
+
+// Default to TUI when no subcommand is given
+program.action(() => launchTui())
 
 // ---------------------------------------------------------------------------
 // Run
