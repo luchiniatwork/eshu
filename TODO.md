@@ -394,12 +394,22 @@ building the CLI first doesn't create throwaway work.
 
 ### Docker
 
-- [ ] `Dockerfile` — multi-stage build for the API server
-- [ ] `docker-compose.yml` — API server + PostgreSQL + pgvector,
-      runs migrations on startup. README quickstart leads with this.
-- [ ] `.env.example` — template env file for Docker Compose
+- [x] `Dockerfile` — multi-stage Bun build (install + slim
+      runtime), health check via `/api/v1/health`
+- [x] `docker-compose.yml` — three services: `db`
+      (pgvector/pgvector:pg16), `migrate` (idempotent migration
+      runner), `api` (built from Dockerfile). README quickstart
+      leads with this.
+- [x] `.dockerignore` — excludes node_modules, .git, .jj, .env,
+      scripts, monitoring
+- [x] `.env.example` — template env file for Docker Compose
       quickstart (referenced by README)
-- [ ] Verify full stack starts and handles messages end-to-end
+- [x] `scripts/migrate.sh` — idempotent migration runner with
+      `_applied_migrations` tracking table. Waits for PostgreSQL,
+      applies new migrations, skips already-applied ones.
+- [x] Verify full stack starts and handles messages end-to-end
+      (directory add → send → inbox round-trip confirmed)
+- [x] Verify migration idempotency (restart skips all 7 migrations)
 
 ### Documentation
 
@@ -417,7 +427,11 @@ building the CLI first doesn't create throwaway work.
 
 ### Visual assets
 
-- [ ] Capture TUI screenshot for README hero image
+- [x] `scripts/seed.ts` — demo seed data script (4 directory
+      entries, 3 threads, 6 messages with realistic content).
+      Run with `bun run scripts/seed.ts` against a running API.
+- [ ] Capture TUI screenshot for README hero image (run seed
+      script first, then `eshu tui` as alice)
 - [ ] Record asciinema demo of CLI workflow (directory → send →
       inbox → read → reply → search) for README
 - [ ] Update README to embed the screenshot and recording once
@@ -425,7 +439,10 @@ building the CLI first doesn't create throwaway work.
 
 ### Monitoring
 
-- [ ] SQL queries for the 5 metrics from SPEC section 10
+- [x] `monitoring/queries.sql` — all 5 operational queries from
+      SPEC section 10: message volume, unread backlog, thread
+      depth, receipt fulfillment, directory coverage.
+      Parameterized by project_id for psql usage.
 - [ ] Verify embedding generation works reliably under load
 
 ---
