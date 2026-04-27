@@ -395,19 +395,33 @@ building the CLI first doesn't create throwaway work.
 ### Docker
 
 - [ ] `Dockerfile` — multi-stage build for the API server
-- [ ] `docker-compose.yml` — API server + PostgreSQL
+- [ ] `docker-compose.yml` — API server + PostgreSQL + pgvector,
+      runs migrations on startup. README quickstart leads with this.
+- [ ] `.env.example` — template env file for Docker Compose
+      quickstart (referenced by README)
 - [ ] Verify full stack starts and handles messages end-to-end
 
 ### Documentation
 
-- [ ] `README.md` — project overview, quickstart, architecture
-      diagram
-- [ ] `AGENTS.md` — code style guidelines, build commands, testing
+- [x] `README.md` — project overview, key concepts, quickstart
+      (Docker Compose + manual), CLI reference, architecture
+      diagram, MCP preview, configuration, project status
+- [x] `AGENTS.md` — code style guidelines, build commands, testing
       conventions
+- [x] `LICENSE` — MIT license
 - [ ] MCP client configuration examples (Claude, Cursor, OpenCode)
-- [ ] CLI installation and configuration guide
+      — README has a generic example; add tool-specific configs
+      once the MCP server is built (Phase 5-6)
 - [ ] Agent prompt guidance: how to use the directory effectively,
       when to check inbox, message composition best practices
+
+### Visual assets
+
+- [ ] Capture TUI screenshot for README hero image
+- [ ] Record asciinema demo of CLI workflow (directory → send →
+      inbox → read → reply → search) for README
+- [ ] Update README to embed the screenshot and recording once
+      captured
 
 ### Monitoring
 
